@@ -1,12 +1,30 @@
-package com.java8.streams;
+package com.streams;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StreamsApplication {
+	
+	//Topics covered below are the details:
+
+	//stream()
+	//filter()
+	//map()
+	//collect()
+	//count()
+	//sorted()
+	//sorted(Comparator)
+	//min(Comparator)
+	//max(Comparator)
+	//forEach()
+	//toArray() -> Highly recommended due to performance.
+	//Stream.of()
+	//stream we can use in the collection as well as if any group of elements then also we can use stream
+	
 
 	public static void main(String[] args) {
 		ArrayList<Integer> l = new ArrayList<>();
@@ -72,7 +90,6 @@ public class StreamsApplication {
 		List<String> outputCricketPlayers = cricketSA.stream().sorted(comp).collect(Collectors.toList());
 		System.out.println("Outputcricket palyers with length " +  outputCricketPlayers);
 		
-		
 		//Min max using streams examples.
 		//Natural sorting ascending order
 		ArrayList<Integer> l1 = new ArrayList<Integer>();
@@ -88,7 +105,7 @@ public class StreamsApplication {
 		Integer max = l1.stream().max((i1,i2)-> i1.compareTo(i2)).get();
 		System.out.println("max value " + max);
 		
-		//reverse order of sroting i.e descending order
+		//reverse order of sorting i.e descending order
 		
 		Integer min1 = l1.stream().min((i1,i2)-> -i1.compareTo(i2)).get();
 		System.out.println("reverse min value " + min1);
@@ -102,7 +119,26 @@ public class StreamsApplication {
 		};
 		
 		l1.stream().forEach(f);
+		l1.stream().forEach(System.out::println);
+		l1.stream().forEach(z -> System.out.println(l));
 		
+		//toArray()
+		//To convert stream of objects into array
+		
+		Integer[] i =l1.stream().toArray(Integer[]::new); //it is constructor reference
+		
+		for(Integer i2 : i)
+		{
+			System.out.println("value of toArray objects " + i2);
+		}
+		Stream.of(i).forEach(System.out::println);//if Integer Array objects each element we have to print Stream.of need to be implement
+	
+		//Without collection stream we can use below are the examples
+		Stream<Integer> s = Stream.of(9,99,999,9999,99999);
+		s.forEach(System.out::println);
+		
+		Integer[] arr = {100,101,103,104,105};
+		Stream.of(arr).forEach(System.out::println);
 	}
 
 }
