@@ -1,4 +1,4 @@
-package com.java8.ParallelArraySort;
+package com.java8.parallelArraySort;
 
 import java.util.Arrays;
 
